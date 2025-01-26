@@ -8,28 +8,28 @@ import androidx.appcompat.app.AppCompatActivity;
 public class loginsec extends AppCompatActivity {
     EditText etEmail, etPassword;
     Button btnLogin, btnRegister;
-    DatabaseHelper db;
+    database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.screen_login);
+        setContentView(R.layout.activity_main);
 
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         btnLogin = findViewById(R.id.btn_login);
 
-        db = new DatabaseHelper(this);
+        db = new database(this);
 
         btnLogin.setOnClickListener(view -> {
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
 
             if (db.checkUser(userEmail, userPass)) {
-                Toast.makeText(LoginScreen.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Toast.makeText(loginsec.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), loginsec.class));
             } else {
-                Toast.makeText(LoginActivity.this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(loginsec.this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();
             }
         });
 
