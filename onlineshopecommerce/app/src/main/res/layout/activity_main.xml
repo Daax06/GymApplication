@@ -1,45 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height ="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp">
 
     <EditText
-        android:id="@+id/et_email"
+        android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#000000"
+
         android:hint="Email"
-        android:minHeight="48dp" />
+        android:inputType="textEmailAddress"
+        android:padding="18dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        tools:ignore="Autofill,HardcodedText,TextContrastCheck,VisualLintTextFieldSize" />
 
     <EditText
-        android:id="@+id/et_password"
+        android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_email"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#000000"
         android:hint="Password"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        />
+        android:padding="18dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
+        tools:ignore="Autofill,HardcodedText,TextContrastCheck,VisualLintTextFieldSize" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_password"
-        android:layout_marginTop="90dp"
-        android:text="Login" />
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:padding="18dp"
+        android:text="Login"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,VisualLintButtonSize"/>
 
     <TextView
-        android:id="@+id/tv_register"
+        android:id="@+id/textViewRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_login"
-        android:layout_marginTop="-106dp"
-        android:clickable="true"
-        android:minHeight="48dp"
-        android:text="Don't have an account? Register"
-        android:textColor="#0277BD" />
-
-</RelativeLayout>
+        android:text="Don't have an account? Register here"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        tools:ignore="HardcodedText" />
+</LinearLayout>

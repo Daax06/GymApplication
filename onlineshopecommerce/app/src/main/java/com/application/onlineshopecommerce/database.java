@@ -1,54 +1,34 @@
 package com.application.onlineshopecommerce;
 
-import android.content.ContentValues; import android.content.Context;
-import android.database.Cursor;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+
 public class database extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "Bookstore.db";
-    private static final String TABLE_NAME = "users";
-    private static final String COL_ID = "id";
-    private static final String COL_NAME = "name";
-    private static final String COL_EMAIL = "email";
-    private static final String COL_PASSWORD = "password";
+    private static final String DATABASE_NAME = "bookstore.db";
+    private static final int DATABASE_VERSION = 1;
 
     public database(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + TABLE_NAME + "  (" +
-                COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_NAME + " TEXT, " +
-                COL_EMAIL + " TEXT, " +
-                COL_PASSWORD + " TEXT)";
-        db.execSQL(createTable);
+        // Create the users table
+        db.execSQL("CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT UNIQUE, password TEXT)");
+
+        // Create the books table (but without inserting any example books)
+        db.execSQL("CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, author TEXT, price REAL, description TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        // Drop the existing tables if they exist
+        db.execSQL("DROP TABLE IF EXISTS users");
+        db.execSQL("DROP TABLE IF EXISTS books");
+
+        // Recreate the tables
         onCreate(db);
-    }
-
-    public boolean registerUser(String name, String email, String password) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COL_NAME, name);
-        values.put(COL_EMAIL, email);
-        values.put(COL_PASSWORD, password);
-
-        long result = db.insert(TABLE_NAME, null, values);
-        return result != -1;
-    }
-    public boolean loginUser (String email, String password) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NAME, null,
-                COL_EMAIL + "=? AND " + COL_PASSWORD + "=?",
-                new String[]{email, password}, null, null, null);
-
-        return cursor.getCount() > 0;
     }
 }

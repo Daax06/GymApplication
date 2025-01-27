@@ -1,38 +1,54 @@
 package com.application.onlineshopecommerce;
 
-import android.content.Intent; import android.os.Bundle;
-import android.widget.Button; import android.widget.EditText;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class loginsec extends AppCompatActivity {
-    EditText etEmail, etPassword;
-    Button btnLogin, btnRegister;
-    database db;
+    private EditText editTextEmail, editTextPassword;
+    private database dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etEmail = findViewById(R.id.et_email);
-        etPassword = findViewById(R.id.et_password);
-        btnLogin = findViewById(R.id.btn_login);
+        dbHelper = new database(this);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        Button buttonLogin = findViewById(R.id.buttonLogin);
+        TextView textViewRegister = findViewById(R.id.textViewRegister);
 
-        db = new database(this);
+        buttonLogin.setOnClickListener(v -> login());
+        textViewRegister.setOnClickListener(v -> startActivity(new Intent(loginsec.this, registrationapp.class)));
+    }
 
-        btnLogin.setOnClickListener(view -> {
-            String email = etEmail.getText().toString();
-            String password = etPassword.getText().toString();
+    private void login() {
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
 
-            if (db.checkUser(userEmail, userPass)) {
-                Toast.makeText(loginsec.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), loginsec.class));
-            } else {
-                Toast.makeText(loginsec.this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        // Check if email and password are not empty
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        btnRegister.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), registrationapp.class)));
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
+
+        if (cursor.moveToFirst()) {
+            Intent intent = new Intent(loginsec.this, homepage.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
     }
 }

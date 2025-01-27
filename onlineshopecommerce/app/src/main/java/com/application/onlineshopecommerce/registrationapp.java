@@ -1,45 +1,48 @@
 package com.application.onlineshopecommerce;
 
-import android.content.Intent;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class registrationapp extends AppCompatActivity {
-
-
-    EditText etName, etEmail, etPassword;
-    Button btnregister;
-    DatabaseHelper db;
+    private EditText editTextName, editTextEmail, editTextPassword;
+    private database dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrationapp);
 
-        etName = findViewById(R.id.et_name);
-        etEmail = findViewById(R.id.et_email);
-        etPassword = findViewById(R.id.et_password);
-        btnregister = findViewById(R.id.btn_register);
-        db = new DatabaseHelper(this);
+        dbHelper = new database(this);
+        editTextName = findViewById(R.id.editTextName);
+        editTextEmail = findViewById(R.id.editTextEmail );
+        editTextPassword = findViewById(R.id.editTextPassword);
+        Button buttonRegister = findViewById(R.id.buttonRegister);
 
-        btnregister.setOnClickListener(View -> {
-            String name = etName.getText().toString();
-            String email = etEmail.getText().toString();
-            String password = etPassword.getText().toString();
+        buttonRegister.setOnClickListener(v -> registerUser ());
+    }
 
-            if (db.registerUser(name, email, password)) {
-                Toast.makeText(registrationapp.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(registrationapp.this, registrationapp.class));
-                finish();
-            } else {
-                Toast.makeText(registrationapp.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(registrationapp.this, "Passwords Do Not Match!", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void registerUser () {
+        String name = editTextName.getText().toString();
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("email", email);
+        values.put("password", password);
+
+        long newRowId = db.insert("users", null, values);
+        if (newRowId != -1) {
+            Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
+            finish(); // Close the registration activity
+        } else {
+            Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show();
+        }
     }
 }
