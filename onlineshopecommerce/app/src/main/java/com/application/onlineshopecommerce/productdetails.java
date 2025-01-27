@@ -11,7 +11,7 @@ public class productdetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_details);
+        setContentView(R.layout.activity_productdetails);
 
         // Initialize the TextViews
         TextView textViewTitle = findViewById(R.id.textViewTitle);
@@ -35,10 +35,10 @@ public class productdetails extends AppCompatActivity {
             // Set the OnClickListener for the button
             buttonAddToCart.setOnClickListener(v -> {
                 // Add book to cart
-                CartManager.getInstance().getCartItems().add(book);
+                cartmanager.getInstance().getCartItems().add(book);
 
                 // Navigate to CartActivity
-                Intent intent = new Intent(BookDetailsActivity.this, CartActivity.class);
+                Intent intent = new Intent(productdetails.this, cart.class);
                 startActivity(intent);
             });
         }

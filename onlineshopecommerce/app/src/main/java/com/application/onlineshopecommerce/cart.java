@@ -16,7 +16,7 @@ public class cart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkout); // Ensure this layout has the ListView with ID listViewCheckoutItems
+        setContentView(R.layout .activity_checkout); // Ensure this layout has the ListView with ID listViewCheckoutItems
 
         ListView listViewCart = findViewById(R.id.listViewCheckoutItems);  // Corrected ID for ListView
         Button buttonCheckout = findViewById(R.id.buttonConfirmPurchase); // Corrected ID for Button
@@ -62,7 +62,7 @@ public class cart extends AppCompatActivity {
             cartmanager.getInstance().clearCart();
 
             // Navigate to ConfirmationActivity
-            Intent intent = new Intent(cart.this, ConfirmationActivity.class);
+            Intent intent = new Intent(cart.this, confirmation.class);
             intent.putExtra("ORDER_DETAILS", orderDetails.toString());
             startActivity(intent);
             finish(); // Close the CartActivity

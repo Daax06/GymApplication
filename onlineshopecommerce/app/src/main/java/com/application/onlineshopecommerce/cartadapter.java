@@ -22,7 +22,7 @@ public class cartadapter extends ArrayAdapter<product> {
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         product book = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2 , parent, false);
         }
 
         TextView textViewTitle = convertView.findViewById(android.R.id.text1);
