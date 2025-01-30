@@ -8,16 +8,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class registrationapp extends AppCompatActivity {
+public class RegistrationApp extends AppCompatActivity {
     private EditText editTextName, editTextEmail, editTextPassword;
-    private database dbHelper;
+    private Database dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrationapp);
 
-        dbHelper = new database(this);
+        dbHelper = new Database(this);
         editTextName = findViewById(R.id.editTextName);
         editTextEmail = findViewById(R.id.editTextEmail );
         editTextPassword = findViewById(R.id.editTextPassword);

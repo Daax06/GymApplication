@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class confirmation extends AppCompatActivity {
+public class Confirmation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class confirmation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Navigate back to the MainActivity
-                Intent intent = new Intent(confirmation.this, homepage.class);
+                Intent intent = new Intent(Confirmation.this, Homepage.class);
                 startActivity(intent);
                 finish(); // Close the ConfirmationActivity
             }

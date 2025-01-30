@@ -13,37 +13,43 @@
         android:theme="@style/Theme.Onlineshopecommerce"
         tools:targetApi="31">
         <activity
-            android:name=".confirmation"
-            android:exported="false" />
+            android:name=".Homepage"
+            android:exported="true" />
         <activity
-            android:name=".checkout"
-            android:exported="false" />
+            android:name=".Profile"
+            android:exported="true" />
         <activity
-            android:name=".cartadapter"
-            android:exported="false" />
+            android:name=".Settings"
+            android:exported="true" />
         <activity
-            android:name=".cart"
-            android:exported="false" />
+            android:name=".Confirmation"
+            android:exported="true" />
         <activity
-            android:name=".cartmanager"
-            android:exported="false" />
+            android:name=".Checkout"
+            android:exported="true" />
         <activity
-            android:name=".productdetails"
-            android:exported="false" />
+            android:name=".CartAdapter"
+            android:exported="true" />
         <activity
-            android:name=".productadapter"
-            android:exported="false" />
+            android:name=".Cart"
+            android:exported="true" />
         <activity
-            android:name=".product"
-            android:exported="false" />
+            android:name=".CartManager"
+            android:exported="true" />
         <activity
-            android:name=".homepage"
-            android:exported="false" />
+            android:name=".ProductDetails"
+            android:exported="true" />
         <activity
-            android:name=".registrationapp"
-            android:exported="false" />
+            android:name=".ProductAdapter"
+            android:exported="true" />
         <activity
-            android:name=".loginsec"
+            android:name=".Product"
+            android:exported="true" />
+        <activity
+            android:name=".RegistrationApp"
+            android:exported="true" />
+        <activity
+            android:name=".LoginSec"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,5 @@
 package com.example.bookstoreapp;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,9 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegistrationScreen extends AppCompatActivity {
 
-
-    EditText etName, etEmail, etPassword;
-    Button btnregister;
+    EditText etName, etEmail, etPassword, etConfirmPassword;
+    Button btnRegister;
     DatabaseHelper db;
 
     @Override
@@ -19,25 +19,41 @@ public class RegistrationScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_register);
 
+        // Initialize views
         etName = findViewById(R.id.et_name);
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
-        btnregister = findViewById(R.id.btn_register);
+        etConfirmPassword = findViewById(R.id.et_confirm_password); // Add confirm password field
+        btnRegister = findViewById(R.id.btn_register);
         db = new DatabaseHelper(this);
 
-        btnregister.setOnClickListener(View -> {
-            String name = etName.getText().toString();
-            String email = etEmail.getText().toString();
-            String password = etPassword.getText().toString();
+        // Set button click listener
+        btnRegister.setOnClickListener(view -> {
+            String name = etName.getText().toString().trim();
+            String email = etEmail.getText().toString().trim();
+            String password = etPassword.getText().toString().trim();
+            String confirmPassword = etConfirmPassword.getText().toString().trim();
 
+            // Validate inputs
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                Toast.makeText(RegistrationScreen.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Check if passwords match
+            if (!password.equals(confirmPassword)) {
+                Toast.makeText(RegistrationScreen.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Register user in the database
             if (db.registerUser(name, email, password)) {
-                Toast.makeText(RegistrationScreen.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(RegistrationScreen.this, RegistrationScreen.class));
+                Toast.makeText(RegistrationScreen.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                // Navigate to the login or home screen
+                startActivity(new Intent(RegistrationScreen.this, LoginScreen.class));
                 finish();
             } else {
-                Toast.makeText(RegistrationScreen.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(RegistrationScreen.this, "Passwords Do Not Match!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistrationScreen.this, "Registration failed. Try again.", Toast.LENGTH_SHORT).show();
             }
         });
     }

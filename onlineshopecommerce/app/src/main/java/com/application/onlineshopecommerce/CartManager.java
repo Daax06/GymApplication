@@ -2,22 +2,22 @@ package com.application.onlineshopecommerce;
 
 import java.util.ArrayList;
 
-public class cartmanager {
-    private static cartmanager   instance;
-    private final ArrayList<product> cartItems;
+public class CartManager {
+    private static CartManager instance;
+    private final ArrayList<Product> cartItems;
 
-    private cartmanager() {
+    private CartManager() {
         cartItems = new ArrayList<>();
     }
 
-    public static cartmanager getInstance() {
+    public static CartManager getInstance() {
         if (instance == null) {
-            instance = new cartmanager();
+            instance = new CartManager();
         }
         return instance;
     }
 
-    public ArrayList<product> getCartItems() {
+    public ArrayList<Product> getCartItems() {
         return cartItems;
     }
 

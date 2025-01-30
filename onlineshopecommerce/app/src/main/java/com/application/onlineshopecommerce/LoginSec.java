@@ -10,23 +10,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class loginsec extends AppCompatActivity {
+public class LoginSec extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
-    private database dbHelper;
+    private Database dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        dbHelper = new database(this);
+        dbHelper = new Database(this);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         Button buttonLogin = findViewById(R.id.buttonLogin);
         TextView textViewRegister = findViewById(R.id.textViewRegister);
 
         buttonLogin.setOnClickListener(v -> login());
-        textViewRegister.setOnClickListener(v -> startActivity(new Intent(loginsec.this, registrationapp.class)));
+        textViewRegister.setOnClickListener(v -> startActivity(new Intent(LoginSec.this, RegistrationApp.class)));
     }
 
     private void login() {
@@ -43,7 +43,7 @@ public class loginsec extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
 
         if (cursor.moveToFirst()) {
-            Intent intent = new Intent(loginsec.this, homepage.class);
+            Intent intent = new Intent(LoginSec.this, Homepage.class);
             startActivity(intent);
             finish();
         } else {

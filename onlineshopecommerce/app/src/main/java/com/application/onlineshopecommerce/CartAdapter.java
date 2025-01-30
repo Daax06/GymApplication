@@ -1,3 +1,4 @@
+
 package com.application.onlineshopecommerce;
 
 import android.content.Context;
@@ -9,26 +10,28 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class productadapter extends ArrayAdapter<product> {
-    public productadapter(Context context, List<product> books) {
+public class CartAdapter extends ArrayAdapter<Product> {
+    public CartAdapter(Context context, ArrayList<Product> books) {
         super(context, 0, books);
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        product book = getItem(position);
+        Product book = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_2 , parent, false);
         }
-        TextView textViewTitle = convertView.findViewById(android.R.id.text1);
-        TextView textViewAuthor = convertView.findViewById(android.R.id.text2);
 
-        assert book != null;
-        textViewTitle.setText(book.getTitle());
-        textViewAuthor.setText(book.getAuthor());
+        TextView textViewTitle = convertView.findViewById(android.R.id.text1);
+        TextView textViewPrice = convertView.findViewById(android.R.id.text2);
+
+        if (book != null) {
+            textViewTitle.setText(book.getName());
+            textViewPrice.setText(String.valueOf(book.getPrice()));
+        }
 
         return convertView;
     }
