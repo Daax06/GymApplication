@@ -27,8 +27,8 @@ public class Confirmation extends AppCompatActivity {
         buttonBackToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate back to the MainActivity
-                Intent intent = new Intent(Confirmation.this, MainActivity.class);
+                // Navigate back to the Homepage
+                Intent intent = new Intent(Confirmation.this, Homepage.class);
                 startActivity(intent);
                 finish(); // Close the ConfirmationActivity
             }

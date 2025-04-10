@@ -43,7 +43,7 @@ public class LoginSec extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email=? AND password=?", new String[]{email, password});
 
         if (cursor.moveToFirst()) {
-            Intent intent = new Intent(LoginSec.this, MainActivity.class);
+            Intent intent = new Intent(LoginSec.this, Homepage.class);
             startActivity(intent);
             finish();
         } else {

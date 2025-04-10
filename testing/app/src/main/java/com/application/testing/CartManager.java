@@ -10,7 +10,7 @@ public class CartManager {
         cartItems = new ArrayList<>();
     }
 
-    public static CartManager getInstance() {
+    public static synchronized CartManager getInstance() {
         if (instance == null) {
             instance = new CartManager();
         }
@@ -21,7 +21,16 @@ public class CartManager {
         return cartItems;
     }
 
+    public void addToCart(Product product) {
+        cartItems.add(product);
+    }
+
     public void clearCart() {
         cartItems.clear();
     }
+
+    public void removeFromCart(Product product) {
+        cartItems.remove(product);
+    }
 }
+
