@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             IntelliGymTheme {
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    IntelliGymApp() // Launch the full app
+                    com.application.intelligym.screens.LoginScreen() // Launch the full app
                 }
             }
         }
