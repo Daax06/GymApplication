@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">onlineshopecommerce</string>
-    <string name="title_home">Home</string>
-    <string name="title_cart">Dashboard</string>
-    <string name="title_profile">Notifications</string>
-</resources>
