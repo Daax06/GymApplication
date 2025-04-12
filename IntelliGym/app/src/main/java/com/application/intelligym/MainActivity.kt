@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import com.application.intelligym.theme.IntelliGymTheme
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.FirebaseApp
-import com.application.intelligym.
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
