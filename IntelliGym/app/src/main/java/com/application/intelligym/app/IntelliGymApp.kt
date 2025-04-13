@@ -8,6 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.application.intelligym.data.home.HomeViewModel
+import com.application.intelligym.navigation.PostOfficeAppRouter
+import com.application.intelligym.navigation.Screen
+import com.application.intelligym.screens.HomeScreen
+import com.application.intelligym.screens.LoginScreen
+import com.application.intelligym.screens.SignUpScreen
+import com.application.intelligym.screens.TermsAndConditionsScreen
+
 
 @Composable
 fun IntelliGymApp(homeViewModel: HomeViewModel = viewModel()) {
