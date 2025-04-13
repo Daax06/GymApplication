@@ -3,22 +3,26 @@ package com.application.intelligym
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import com.application.intelligym.navigation.NavGraph
-import com.application.intelligym.theme.IntelliGymTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.application.intelligym.app.IntelliGymApp
 
-class IntroActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            IntelliGymTheme {
-                Surface(color = MaterialTheme.colorScheme.background) {
-                    NavGraph(
-                        navController = TODO()
-                    )
-                }
-            }
+            IntelliGymApp()
         }
     }
+}
+
+@Preview
+@Composable
+fun DefaultPreview(){
+    IntelliGymApp()
 }
