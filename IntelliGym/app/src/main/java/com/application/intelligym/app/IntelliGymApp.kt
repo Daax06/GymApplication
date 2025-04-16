@@ -3,6 +3,7 @@ package com.application.intelligym.app
 import androidx.activity.viewModels
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,7 +23,7 @@ fun IntelliGymApp(homeViewModel: HomeViewModel = viewModel()) {
 
     homeViewModel.checkForActiveSession()
 
-    surfaceColorAtElevation(
+    Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White
     ) {
