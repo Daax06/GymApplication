@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#C58BF2</color>
+    <color name="colorBg">#F7F8F8</color>
+    <color name="colorGray">#7B6F72</color>
+    <color name="colorPrimary">#92A3FD</color>
+    <color name="colorSecondary">#9DCEFF</color>
+    <color name="colorText">#1D1617</color>
+    <color name="colorWhite">#FFFFFFFF</color>
+    <string name="app_name">LoginFlowApp</string>
+    <string name="create_account">Create an Account </string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="forgot_password">Forgot your password</string>
+    <string name="go_to_login">Already have an account? Login</string>
+    <string name="hello">Hey there, </string>
+    <string name="hide_password">Hide password</string>
+    <string name="home">Home</string>
+    <string name="last_name">Last Name</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="menu">Menu</string>
+    <string name="navigation_header">App Drawer</string>
+    <string name="or">or</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="show_password">Show password</string>
+    <string name="terms_and_conditions">By continuing you accept our Privacy Policy and Term of Use</string>
+    <string name="terms_and_conditions_header">Term of Use</string>
+    <string name="welcome">Welcome Back</string>
+    <style name="Theme.LoginFlow" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>
