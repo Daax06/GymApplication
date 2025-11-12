@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorAccent">#C58BF2</color>
+    <color name="black">#000000</color>
+    <color name="colorAccent">#FAE227</color>
     <color name="colorBg">#F7F8F8</color>
     <color name="colorGray">#7B6F72</color>
-    <color name="colorPrimary">#92A3FD</color>
-    <color name="colorSecondary">#9DCEFF</color>
+    <color name="colorPrimary">#1F1F1F</color>
+    <color name="colorSecondary">#FFFFFF</color>
     <color name="colorText">#1D1617</color>
-    <color name="colorWhite">#FFFFFFFF</color>
+    <color name="colorWhite">#E3E3E3</color>
     <string name="app_name">LoginFlowApp</string>
     <string name="create_account">Create an Account </string>
+    <string name="default_web_client_id" translatable="false">657764232965-8n9f30d2jd4lo701qssvqcv098mc87qj.apps.googleusercontent.com</string>
     <string name="email">Email</string>
     <string name="first_name">First Name</string>
     <string name="forgot_password">Forgot your password</string>
+    <string name="gcm_defaultSenderId" translatable="false">657764232965</string>
     <string name="go_to_login">Already have an account? Login</string>
+    <string name="google_api_key" translatable="false">AIzaSyB9i3STeDCsphViA4IJA0fxnorkYWlwXIU</string>
+    <string name="google_app_id" translatable="false">1:657764232965:android:e2c5c4bfbfe523e0cd116c</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyB9i3STeDCsphViA4IJA0fxnorkYWlwXIU</string>
+    <string name="google_storage_bucket" translatable="false">intelligym-8a246.firebasestorage.app</string>
     <string name="hello">Hey there, </string>
     <string name="hide_password">Hide password</string>
     <string name="home">Home</string>
@@ -21,13 +28,21 @@
     <string name="logout">Logout</string>
     <string name="menu">Menu</string>
     <string name="navigation_header">App Drawer</string>
+    <string name="next">Next</string>
     <string name="or">or</string>
     <string name="password">Password</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="project_id" translatable="false">intelligym-8a246</string>
     <string name="register">Register</string>
     <string name="show_password">Show password</string>
     <string name="terms_and_conditions">By continuing you accept our Privacy Policy and Term of Use</string>
     <string name="terms_and_conditions_header">Term of Use</string>
     <string name="welcome">Welcome Back</string>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#202020</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_android_black_24dp</item>
+        <item name="postSplashScreenTheme">@android:style/Theme.Material.NoActionBar</item>
+    </style>
     <style name="Theme.LoginFlow" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:windowFullscreen">true</item>
